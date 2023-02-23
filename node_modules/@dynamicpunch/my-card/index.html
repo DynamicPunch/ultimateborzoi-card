@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="Description" content="Put your description here.">
+  <base href="/">
+
+  <style>
+    html,
+    .s1 {
+  width: 350px;
+  text-align: center;
+  background: cyan;
+
+  
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  
+  border: 2px solid red;
+  border-radius: 16px;
+  box-shadow: 4px 4px;
+}
+
+
+.h1 {
+  font: 28px Comic Sans MS;
+  color: white;
+  text-shadow: 2px 2px #000000;
+  line-height: 0px;
+  
+}
+.h2 {
+  font: 20px Comic Sans MS;
+  color: white;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px #000000;
+}
+
+.p1 {
+  font: 14px Comic Sans MS;
+  color: white;
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  text-shadow: 2px 2px #000000;
+}
+
+.l1 {
+  font: 14px Comic Sans MS;
+  color: white;
+  margin-bottom: 24px;
+  margin-left: 16px;
+  margin-right: 16px;
+  text-shadow: 2px 2px #000000;
+  
+}
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
+
+
+.b1 {
+  font: 12px Comic Sans MS;
+  border-radius: 16px;
+  box-shadow: 2px 2px;
+  margin-bottom: 16px;
+  
+}
+
+.i1 {
+  border: 3px solid blue;
+  border-radius: 16px;
+  box-shadow: 4px 4px;
+  
+}
+
+
+@media (max-width: 800px) and (min-width: 500px) {
+  .b1 {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  * {
+    transform: scale(0.9);
+  }
+}
+
+body {
+  background: pink;
+}
+
+
+ .but{
+   padding: 4px;
+       box-shadow: 2px 2px #000000;
+    background-color: cyan;
+     border-radius: 16px;
+     border: 2px solid blue;
+  text-shadow: 2px 2px #000000;
+    font: 14px Comic Sans MS;
+  color: white;
+
+}
+
+.but:hover{
+  background-color: red;
+}
+
+.but:focus {
+  background-color: blue; 
+}
+
+
+.tog
+{
+  background-color: cyan;
+}
+
+.tog2
+{
+  background-color: pink;
+}
+
+
+.but:hover{
+  background-color: red;
+}
+
+.but:focus {
+  background-color: blue; 
+}
+
+
+
+  </style>
+  <title>my-card</title>
+</head>
+
+<body>
+  <div>
+    <button id="copy" class="but">Copy
+      </button>
+    
+    <button id="color" class = "but">Background Color</button>
+    
+    <button id="title" class = "but">Change Title</button>
+    
+    <button id= "delete" class = "but">Delete</button>
+
+    
+      
+
+      <br>
+      <h1 class="h1" id="name">
+      Dog Facts
+      </h1>
+      <h2 class="h2">
+      Borzoi
+      </h2>
+      
+    <img class="i1" src="https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=%5B700%2C759%5D&w=2000&h=1000&url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F08%2F05%2Fborzoi-is-big-tiktok-535986771-2000.jpg" width=300px>
+      
+      <p class="p1" id="desc">
+         This is a borzoi, they are a funny dog commonly found on the internet. They have been really popular recently. Here are some interesting "true" facts about them.
+      <ul class="l1">
+        <li>They have long noses</li>
+        <li>They look like horses</li>
+        <li>They can see the future</li>
+      </ul>
+      </p>
+    
+    
+    <button class="but" id="details">
+          Details
+    </button>
+     
+
+    </div>
+
+  <script type="module" src="./out-tsc/src/my-card.js">
+const cop = document.querySelector("#copy");
+
+const toggleB = document.querySelector("#color");
+
+const changeTitle = document.querySelector("#title");
+
+const deleteButton = document.querySelector("#delete");
+
+const detailButton = document.querySelector('#details'); //changed getElementById to querySelector
+
+
+const card = document.getElementById('base');
+
+const words = document.querySelector('p1');
+
+const body = document.querySelector('body');
+
+
+
+
+
+cop.addEventListener('click', function(e) {
+  const node = document.getElementById('base');
+  let clone = node.cloneNode(true);
+
+  document.body.appendChild(clone);
+});
+
+
+toggleB.addEventListener("click", function() {
+  card.classList.toggle("tog");
+  body.classList.toggle("tog2");
+});
+
+changeTitle.addEventListener('click', function(e) {
+  var x = document.getElementById("name");
+  if (x.innerHTML === "Dog Facts") {
+    x.innerHTML = "Something Else";
+  } else {
+    x.innerHTML = "Dog Facts";
+  }
+});
+deleteButton.addEventListener("click", function() { 
+  const cardContainer = document.getElementById("base"); // Defined cardContainer, set to base ID
+  cardContainer.remove(cardContainer.lastChild); // changed .removeChild to .remove, removeChild gets rid of each inside div independently, remove gets rid of the div selected
+});
+
+
+detailButton.addEventListener('click', function(e) {
+  const p = document.getElementById("desc"); // defined p and added a desc id to the text in HTML
+  if (p.style.display === "none"){
+    p.style.display = "block"
+  } 
+  else {
+    p.style.display = "none";
+  }
+});
+  </script>
+
+
+
+
+
+</body>
+
+</html>
