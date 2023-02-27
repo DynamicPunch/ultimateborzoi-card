@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@dynamicpunch/my-card": "^0.0.0"
+    "@dynamicpunch/my-card": "^0.0.0",
+    "@lrnwebcomponents/meme-maker": "^4.1.0"
   }
 }
